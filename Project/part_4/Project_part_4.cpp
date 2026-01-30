@@ -471,9 +471,13 @@ int main()
     vector<int> simple_1;
     vector<int> simple_2;
     int prime = 2;
+    int max { 0 };
+
+    cout << "Введите максимальный элемент последовательности > ";
+    cin >> max;
 
     // заполнение массива чисел
-    for (int i = 1; i <= 100; ++i) { simple_1.push_back(i); }
+    for (int i = 1; i <= max; ++i) { simple_1.push_back(i); }
 
     while (prime != -1)
     {
