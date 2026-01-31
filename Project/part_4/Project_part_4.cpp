@@ -468,7 +468,7 @@ int main()
     } */
 
     // простые числа
-    vector<int> simple_1;
+    /* vector<int> simple_1;
     vector<int> simple_2;
     int prime = 2;
     int max { 0 };
@@ -511,6 +511,119 @@ int main()
     for (int i : simple_2)
     {
         cout << i << endl;
+    } */
+
+    /* vector<int> numbers;
+    vector<int> repeat_numbers;
+    vector<int> repeat_numbers_count;
+    vector<int> repeat_number_final;
+    const int max { 1000 };
+    const int min { 0 };
+    int max_counter_value { 0 };
+
+    for (int i { min }; i < max; ++i) { numbers.push_back((rand() % (max - min + 1)) + min); }
+
+    // нахождение моды
+    for (int i { 0 }; i < numbers.size(); ++i)
+    {
+        bool present_repeats { false };
+
+        for (int v { 0 }; v < repeat_numbers.size(); ++v)
+        {
+            if (numbers[i] == repeat_numbers[v])
+            {
+                present_repeats = true;
+                break;
+            }
+        }
+
+        if (present_repeats != true)
+        {
+            int repeat { numbers[i] };
+            int counter { 1 };
+
+            for (int j { i + 1 }; j < numbers.size(); ++j)
+            {
+                if (repeat == numbers[j]) ++counter;
+            }
+
+            if (counter > 1)
+            {
+                if (counter > max_counter_value) max_counter_value = counter;
+
+                repeat_numbers.push_back(repeat);
+                repeat_numbers_count.push_back(counter);
+            }
+        }
+    }
+    
+    for (int i { 0 }; i < repeat_numbers_count.size(); ++i)
+    {
+        if (max_counter_value == repeat_numbers_count[i]) cout << "Модное число " << repeat_numbers[i] << " с количеством повторений " << max_counter_value << endl;
+    } */
+
+    vector<string> str_vektor;
+    vector<string> repeat_str;
+    vector<int> repeat_str_count;
+    vector<int> max_length_index;
+    string max;
+    string min;
+    int max_length  { 0 };
+    int min_length  { 0 };
+    int max_counter_value { 0 };
+
+    cout << "Введите последовательность строк: ";
+    for (string str; cin >> str; ) str_vektor.push_back(str);
+
+    // нахождение строк максимальной и минимальной длины
+    if (str_vektor.size() != 0) min_length = str_vektor[0].size();
+
+    for (int i { 0 }; i < str_vektor.size(); ++i)
+    {
+        if (str_vektor[i].size() > max_length) max_length = str_vektor[i].size();
+        if (str_vektor[i].size() < min_length) min_length = str_vektor[i].size();
+    }
+
+    for (string str : str_vektor) if (max_length == str.size()) cout << "Наибольшая строка: " << str << endl;
+    for (string str : str_vektor) if (min_length == str.size()) cout << "Наименьшая строка: " << str << endl;
+
+    // нахождение моды строки
+    for (int i { 0 }; i < str_vektor.size(); ++i)
+    {
+        bool present_repeats { false };
+
+        for (int v { 0 }; v < repeat_str.size(); ++v)
+        {
+            if (str_vektor[i] == repeat_str[v])
+            {
+                present_repeats = true;
+                break;
+            }
+        }
+
+        if (present_repeats != true)
+        {
+            string repeat { str_vektor[i] };
+            int counter { 1 };
+
+            for (int j { i + 1 }; j < str_vektor.size(); ++j)
+            {
+                if (repeat == str_vektor[j]) ++counter;
+            }
+
+            if (counter > 1)
+            {
+                if (counter > max_counter_value) max_counter_value = counter;
+
+                repeat_str.push_back(repeat);
+                repeat_str_count.push_back(counter);
+            }
+        }
+    }
+
+    for (int i { 0 }; i < repeat_str_count.size(); ++i)
+    {
+        if (max_counter_value == repeat_str_count[i]) cout << "Модная строка " << repeat_str[i] << " с количеством повторений " << max_counter_value << endl;
     }
 
     cin.ignore();
