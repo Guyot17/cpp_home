@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -562,7 +563,7 @@ int main()
         if (max_counter_value == repeat_numbers_count[i]) cout << "Модное число " << repeat_numbers[i] << " с количеством повторений " << max_counter_value << endl;
     } */
 
-    vector<string> str_vektor;
+    /* vector<string> str_vektor;
     vector<string> repeat_str;
     vector<int> repeat_str_count;
     vector<int> max_length_index;
@@ -573,7 +574,10 @@ int main()
     int max_counter_value { 0 };
 
     cout << "Введите последовательность строк: ";
-    for (string str; cin >> str; ) str_vektor.push_back(str);
+    for (string str; cin >> str; )
+    {
+        str_vektor.push_back(str);
+    }
 
     // нахождение строк максимальной и минимальной длины
     if (str_vektor.size() != 0) min_length = str_vektor[0].size();
@@ -611,7 +615,7 @@ int main()
                 if (repeat == str_vektor[j]) ++counter;
             }
 
-            if (counter > 1)
+            if (counter >= 1)
             {
                 if (counter > max_counter_value) max_counter_value = counter;
 
@@ -624,7 +628,102 @@ int main()
     for (int i { 0 }; i < repeat_str_count.size(); ++i)
     {
         if (max_counter_value == repeat_str_count[i]) cout << "Модная строка " << repeat_str[i] << " с количеством повторений " << max_counter_value << endl;
+    } */
+
+    /* double a { 0.0 };
+    double b { 0.0 };
+    double c { 0.0 };
+    double x1 { 0.0 };
+    double x2 { 0.0 };
+    double discrim { 0.0 };
+
+    cout << "Решение квадратного уравнения\n";
+    cout << "Введите коэффициент a: ";
+    cin >> a;
+    cout << "Введите коэффициент b: ";
+    cin >> b;
+    cout << "Введите коэффициент c: ";
+    cin >> c;
+
+    discrim = pow(b, 2) - 4 * a * c;
+
+    if (discrim > 0)
+    {
+        x1 = (-b + sqrt(discrim)) / (2 * a);
+        x2 = (-b - sqrt(discrim)) / (2 * a);
+
+        cout << "Корень x1: " << x1 << endl;
+        cout << "Корень x2: " << x2 << endl;
     }
+    else if (discrim == 0)
+    {
+        x1 = -b / (2 * a);
+        cout << "Корень x: " << x1 << endl;
+    }
+    else
+        cout << "Корней нет, значение дискриминанта отрицательно: " << discrim << endl; */
+
+    vector<string> names;
+    vector<int> scores;
+    string in_name;
+    int in_score { -1 };
+    int score { -1 };
+    bool finded { false };
+
+    while (cin)
+    {
+        bool repeat { false };
+        string name { "" };
+
+        cout << "Введите имя и количество очков: ";
+        cin >> name;
+        cin >> score;
+
+        if ((name == "NoName") && (score == 0))
+        {
+            cout << "Введено запрещенное имя и счет\n";
+            break;
+        }
+
+        for (string str : names)
+        {
+            if (str == name)
+            {
+                cout << "Имя " << name << " уже есть в списке\n";
+                repeat = true;
+                break;
+            }
+        }
+
+        if (!repeat && (name !=""))
+        {
+            names.push_back(name);
+            scores.push_back(score);
+        }
+    }
+
+    // cout << "Введите имя: ";
+    // cin >> in_name;
+
+    cout << "Введите количество очков: ";
+    cin >> in_score;
+
+    for (int i { 0 }; i < scores.size(); ++i)
+    {
+        if (in_score == scores[i])
+        {
+            cout << "У " << names[i] << " очков " << in_score << endl;
+            finded = true;
+        }
+    }
+
+    if (!finded)
+        cout << "Людей с таким количеством очков не найдено\n";
+
+
+    /* cout << "Перечень игроков: \n";
+    for (int i { 0 }; i < names.size(); ++i)
+        cout << names[i] << " " << scores[i] << endl; */
 
     cin.ignore();
     getchar();
