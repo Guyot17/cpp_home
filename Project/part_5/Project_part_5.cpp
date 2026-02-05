@@ -8,6 +8,7 @@ try
     void error (string sl, string s2);
     double ctok (double c);
     double ctok_1 (double c);
+    void print_values (vector<int> v);
 
     // cout << "Success!\n";
 
@@ -297,7 +298,7 @@ try
 
     cout << "Максимальное число Фибоначчи в типе данных int: " << fibonacci_array[index - 1] << " с индексом " << index - 1 << endl; */
 
-    vector<int> numbers_internal;
+    /* vector<int> numbers_internal;
     vector<int> numbers_in;
     int bull { 0 };
     int cow { 0 };
@@ -372,8 +373,90 @@ try
         }
         else
             cout << "Количество быков " << bull << ", количество коров " << cow << ". Попробуйте еще раз\n";
-    }
+    } */
     
+    vector<int> sunday;
+    vector<int> monday;
+    vector<int> tuesday;
+    vector<int> wednesday;
+    vector<int> thursday;
+    vector<int> friday;
+    vector<int> saturday;
+
+    int counter_bad_input { 0 };
+
+
+    cout << "Введите дни недели и число: ";
+
+    while (cin)
+    {
+        string str { "" };
+        int in_number { 0 };
+
+        cin >> str;
+        cin >> in_number;
+
+        transform(str.begin(), str.end(), str.begin(), [](unsigned char c){ return tolower(c); });
+
+        if ((str == "sunday") || (str == "sun"))
+            sunday.push_back(in_number);
+        else if ((str == "monday") || (str == "mon"))
+            monday.push_back(in_number);
+        else if ((str == "tuesday") || (str == "tue"))
+            tuesday.push_back(in_number);
+        else if ((str == "wednesday") || (str == "wed"))
+            wednesday.push_back(in_number);
+        else if ((str == "thursday") || (str == "thu"))
+            thursday.push_back(in_number);
+        else if ((str == "friday") || (str == "fri"))
+            friday.push_back(in_number);
+        else if ((str == "saturday") || (str == "satu"))
+            saturday.push_back(in_number);
+        else if (str != "")
+            ++counter_bad_input;
+    }
+
+    // вывод заначений по дня недели
+    if (monday.size() != 0)
+    {
+        cout << "monday: ";
+        print_values(monday);
+    }
+    if (tuesday.size() != 0)
+    {
+        cout << "tuesday: ";
+        print_values(tuesday);
+    }
+    if (wednesday.size() != 0)
+    {
+        cout << "wednesday: ";
+        print_values(wednesday);
+    }
+    if (thursday.size() != 0)
+    {
+        cout << "thursday: ";
+        print_values(thursday);
+    }
+    if (friday.size() != 0)
+    {
+        cout << "friday: ";
+        print_values(friday);
+    }
+    if (saturday.size() != 0)
+    {
+        cout << "saturday: ";
+        print_values(saturday);
+    }
+    if (sunday.size() != 0)
+    {
+        cout << "sunday: ";
+        print_values(sunday);
+    }
+
+    if (counter_bad_input != 0)
+        cout << "Количество отбракованных записей: " << counter_bad_input << endl;
+
+
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     keep_window_open();
@@ -394,6 +477,20 @@ catch(...)
 
 
 
+
+void print_values (vector<int> v)
+{
+    int sum { 0 };
+
+    for (int i : v)
+    {
+        cout << i << ", ";
+        sum += i;
+    }
+
+
+    cout << "\b\b. Сумма чисел равна " << sum << " \n";
+}
 
 double ctok (double c)
 {
